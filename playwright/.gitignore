@@ -1,0 +1,13 @@
+# Dependencias
+node_modules/
+
+# Credenciales y sesiones guardadas
+.env
+auth/
+
+# Resultados que se generan en cada corrida
+test-results/
+playwright-report/
+resultados/
+blob-report/
+playwright/.cache/

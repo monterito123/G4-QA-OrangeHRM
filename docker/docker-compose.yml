@@ -1,0 +1,32 @@
+﻿name: orangehrm-g4
+
+services:
+  db:
+    image: mariadb:10.11
+    container_name: g4-orangehrm-db
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      MARIADB_DATABASE: ${MARIADB_DATABASE}
+      MARIADB_USER: ${MARIADB_USER}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+  app:
+    image: orangehrm/orangehrm:${OHRM_TAG:-latest}
+    container_name: g4-orangehrm-app
+    restart: unless-stopped
+    ports:
+      - "8200:80"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  db_data:

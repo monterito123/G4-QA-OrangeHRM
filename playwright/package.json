@@ -1,0 +1,21 @@
+{
+  "name": "playwright",
+  "version": "1.0.0",
+  "description": "Pruebas automatizadas del Grupo 4 sobre OrangeHRM 5.9",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "regresion": "playwright test --grep @regresion",
+    "reporte:local": "playwright show-report playwright-report/local",
+    "reporte:demo": "playwright show-report playwright-report/demo"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "@types/node": "^26.6.6",
+    "dotenv": "16.4.5"
+  }
+}

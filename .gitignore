@@ -1,0 +1,29 @@
+# ===== Credenciales: nunca se suben =====
+.env
+**/.env
+playwright/auth/
+# Documento interno con datos de la instancia local
+CONTEXTO_PROYECTO.md
+# La grabacion de BlazeMeter trae la clave en texto
+**/*Combined-JMeter-and-Selenium.yaml
+# Plantilla vieja de la fase 0 (tenia el usuario escrito en el codigo)
+scripts/plantillas/
+
+# ===== Dependencias =====
+playwright/node_modules/
+
+# ===== Resultados y evidencia pesada (quedan en la carpeta compartida del grupo) =====
+playwright/test-results/
+playwright/playwright-report/
+playwright/resultados/
+playwright/blob-report/
+jmeter/resultados/
+logs/
+evidencias/
+PR02_presentacion/_trabajo/
+PR02_presentacion/fuente/
+*.tar
+*.zip
+
+# Logs sueltos (por ejemplo jmeter/jmeter.log)
+*.log

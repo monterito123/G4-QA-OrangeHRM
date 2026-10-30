@@ -1,0 +1,50 @@
+# Corre la regresion del ciclo 4 (Playwright) contra la demo publica de OrangeHRM en cada push a main.
+# Las credenciales de la demo van en los secretos del repositorio (DEMO_ADMIN_USER y DEMO_ADMIN_PASS), no en el codigo.
+# Nota: CP-011 (d) falla a proposito mientras siga abierto el defecto G4QA-23, asi que el resultado esperado
+# hoy es 15 de 16 pruebas en verde. No se oculta: se decide despues de la revision con el PO (G4QA-24).
+name: Regresion Playwright (demo publica)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  regresion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: playwright
+    env:
+      TARGET: demo
+      DEMO_URL: https://opensource-demo.orangehrmlive.com
+      DEMO_ADMIN_USER: ${{ secrets.DEMO_ADMIN_USER }}
+      DEMO_ADMIN_PASS: ${{ secrets.DEMO_ADMIN_PASS }}
+    steps:
+      - name: Descargar el codigo
+        uses: actions/checkout@v4
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: playwright/package-lock.json
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Instalar Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Correr la regresion en Chromium contra la demo
+        run: npx playwright test --grep @regresion --project=chromium
+
+      - name: Guardar el reporte HTML
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reporte-playwright
+          path: playwright/playwright-report/
+          retention-days: 14

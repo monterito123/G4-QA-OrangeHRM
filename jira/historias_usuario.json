@@ -1,0 +1,316 @@
+[
+ {
+  "id": "HU-01",
+  "rol": "Empleado (ESS)",
+  "quiero": "Iniciar y cerrar sesión con mi usuario y contraseña.",
+  "para": "Entrar al sistema de forma segura y terminar mi sesión cuando deje de usarlo.",
+  "criterios": [
+   "CA-01.1 Dado que tengo una cuenta activa, cuando ingreso usuario y contraseña correctos, entonces el sistema me lleva al Dashboard.",
+   "CA-01.2 Dado que ingreso credenciales incorrectas, cuando presiono Login, entonces aparece \"Invalid credentials\" sin indicar cuál dato falló.",
+   "CA-01.3 Dado que dejo un campo vacío, cuando presiono Login, entonces el campo muestra \"Required\" y no se inicia sesión.",
+   "CA-01.4 Dado que tengo la sesión iniciada, cuando elijo Logout, entonces vuelvo a la pantalla de login.",
+   "CA-01.5 Dado que cerré sesión, cuando uso el botón Atrás o abro una URL interna, entonces el sistema me pide autenticarme de nuevo."
+  ],
+  "escenarios": "Positivo: Login con credenciales válidas Negativo: Contraseña incorrecta Negativo: Usuario inexistente Negativo: Campos vacíos Positivo: Logout Negativo: Botón Atrás después del logout Casos: CP-001, CP-002, CP-003",
+  "estimacion": "3",
+  "prioridad": "P1 - Crítico"
+ },
+ {
+  "id": "HU-02",
+  "rol": "Empleado (ESS)",
+  "quiero": "Solicitar el restablecimiento de mi contraseña.",
+  "para": "Recuperar el acceso a mi cuenta si olvido mis credenciales.",
+  "criterios": [
+   "CA-02.1 Dado que estoy en \"Forgot your password?\", cuando ingreso un usuario válido y envío, entonces se muestra la confirmación del restablecimiento.",
+   "CA-02.2 Dado que dejo el usuario vacío, cuando envío, entonces aparece \"Required\" y no se procesa la solicitud.",
+   "CA-02.3 Dado que envié la solicitud, cuando el sistema responde, entonces no muestra la contraseña actual ni datos confidenciales de la cuenta.",
+   "CA-02.4 Dado que completé el restablecimiento, cuando inicio sesión, entonces funciona la contraseña nueva y la anterior deja de ser válida."
+  ],
+  "escenarios": "Positivo: Solicitud con usuario válido Negativo: Campo de usuario vacío Negativo: El mensaje no revela datos de la cuenta Positivo: Login con la nueva contraseña (en la demo no llega el correo, se documenta como limitación) Casos: CP-004",
+  "estimacion": "3",
+  "prioridad": "P1 - Crítico"
+ },
+ {
+  "id": "HU-03",
+  "rol": "Administrador de RR. HH.",
+  "quiero": "Crear cuentas de usuario, asignarles un rol y asociarlas a un empleado.",
+  "para": "Controlar quién entra al sistema y qué puede hacer cada persona.",
+  "criterios": [
+   "CA-03.1 Dado que completo todos los datos obligatorios válidos, cuando guardo, entonces la cuenta se crea con mensaje de éxito y aparece en la lista con su rol, empleado y estado.",
+   "CA-03.2 Dado que la cuenta se creó en estado Enabled, cuando el usuario inicia sesión con sus credenciales, entonces entra al sistema.",
+   "CA-03.3 Dado que el nombre de usuario ya existe, cuando guardo, entonces el sistema rechaza la cuenta con \"Already exists\".",
+   "CA-03.4 Dado que la contraseña y su confirmación no coinciden o la contraseña no cumple la política, cuando guardo, entonces se muestra la validación y no se crea la cuenta.",
+   "CA-03.5 Dado que falta un campo obligatorio, cuando guardo, entonces se marca el campo y no se guarda."
+  ],
+  "escenarios": "Positivo: Crear usuario ESS asociado a un empleado Positivo: Login con el usuario nuevo Negativo: Usuario duplicado Negativo: Contraseñas distintas Negativo: Contraseña bajo el mínimo Negativo: Campos obligatorios vacíos Casos: CP-005, CP-006",
+  "estimacion": "5",
+  "prioridad": "P1 - Crítico"
+ },
+ {
+  "id": "HU-04",
+  "rol": "Administrador de RR. HH.",
+  "quiero": "Habilitar o deshabilitar cuentas de usuario.",
+  "para": "Quitar el acceso a quien ya no trabaja en la empresa y devolverlo cuando corresponda.",
+  "criterios": [
+   "CA-04.1 Dado que una cuenta está Enabled, cuando la cambio a Disabled y guardo, entonces el sistema confirma el cambio y la lista muestra el nuevo estado.",
+   "CA-04.2 Dado que una cuenta está Disabled, cuando el usuario intenta entrar con credenciales correctas, entonces se le niega el acceso.",
+   "CA-04.3 Dado que una cuenta está Disabled, cuando la vuelvo a Enabled, entonces el usuario puede iniciar sesión otra vez."
+  ],
+  "escenarios": "Positivo: Deshabilitar y revisar el estado Negativo: Login con la cuenta deshabilitada Positivo: Reactivar y volver a iniciar sesión Casos: CP-007",
+  "estimacion": "3",
+  "prioridad": "P1 - Crítico"
+ },
+ {
+  "id": "HU-05",
+  "rol": "Administrador de RR. HH.",
+  "quiero": "Que cada rol solo vea y use los módulos que le corresponden.",
+  "para": "Proteger los datos personales de los colaboradores y evitar accesos no autorizados.",
+  "criterios": [
+   "CA-05.1 Dado que entro con rol ESS, cuando reviso el menú, entonces no aparecen Admin ni PIM.",
+   "CA-05.2 Dado que soy ESS, cuando pego la URL de un módulo sin permiso, entonces el sistema bloquea el acceso y no muestra datos.",
+   "CA-05.3 Dado que soy ESS, cuando abro My Info, entonces solo veo y edito mi propio perfil.",
+   "CA-05.4 Dado que intento una consulta o modificación sin permiso, cuando el servidor la recibe, entonces la rechaza aunque la opción esté oculta en pantalla."
+  ],
+  "escenarios": "Positivo: Menú del rol ESS Negativo: URL directa a Admin Negativo: URL directa a la lista de PIM Positivo: My Info solo con datos propios Casos: CP-008, CP-009",
+  "estimacion": "5",
+  "prioridad": "P1 - Crítico"
+ },
+ {
+  "id": "HU-06",
+  "rol": "Administrador de RR. HH.",
+  "quiero": "Registrar empleados nuevos en PIM.",
+  "para": "Mantener al día el expediente del personal.",
+  "criterios": [
+   "CA-06.1 Dado que ingreso nombre y apellido válidos, cuando guardo, entonces el empleado se crea con un Employee Id único y aparece en Employee List.",
+   "CA-06.2 Dado que falta un campo obligatorio, cuando guardo, entonces se muestra \"Required\" y no se guarda.",
+   "CA-06.3 Dado que uso un Employee Id que ya existe, cuando guardo, entonces el sistema rechaza el registro.",
+   "CA-06.4 Dado que un campo supera la longitud máxima o tiene caracteres no permitidos, cuando guardo, entonces el sistema lo rechaza con su mensaje."
+  ],
+  "escenarios": "Positivo: Alta con los datos mínimos Negativo: Nombre y apellido vacíos Negativo: Longitud máxima y un carácter más Negativo: Employee Id repetido Negativo: Caracteres especiales en el nombre Casos: CP-010, CP-011",
+  "estimacion": "3",
+  "prioridad": "P1 - Crítico"
+ },
+ {
+  "id": "HU-07",
+  "rol": "Administrador de RR. HH.",
+  "quiero": "Buscar empleados por nombre o por ID.",
+  "para": "Encontrar rápido el expediente que necesito.",
+  "criterios": [
+   "CA-07.1 Dado que el empleado existe, cuando busco por su nombre o su Employee Id, entonces aparece en los resultados.",
+   "CA-07.2 Dado que uso varios filtros a la vez, cuando busco, entonces los resultados cumplen todas las condiciones.",
+   "CA-07.3 Dado que ningún empleado coincide, cuando busco, entonces aparece \"No Records Found\".",
+   "CA-07.4 Dado que hay filtros aplicados, cuando pulso Reset, entonces se limpian los filtros."
+  ],
+  "escenarios": "Positivo: Búsqueda por nombre Positivo: Búsqueda por ID Positivo: Filtros combinados Negativo: Nombre inexistente Positivo: Reset de filtros Casos: CP-012",
+  "estimacion": "2",
+  "prioridad": "P1 - Crítico"
+ },
+ {
+  "id": "HU-08",
+  "rol": "Administrador de RR. HH.",
+  "quiero": "Modificar los datos personales y de contacto de un empleado.",
+  "para": "Tener su expediente actualizado.",
+  "criterios": [
+   "CA-08.1 Dado que cambio datos válidos, cuando guardo, entonces el sistema confirma y los cambios se mantienen al recargar.",
+   "CA-08.2 Dado que borro el apellido, cuando guardo, entonces aparece \"Required\" y no se guarda.",
+   "CA-08.3 Dado que ingreso un valor con formato o longitud inválida, cuando guardo, entonces se rechaza con su mensaje.",
+   "CA-08.4 Dado que edito un campo, cuando guardo, entonces los demás datos no cambian."
+  ],
+  "escenarios": "Positivo: Cambiar el apellido Positivo: Agregar teléfono en Contact Details Positivo: Persistencia al recargar Negativo: Apellido vacío Casos: CP-013",
+  "estimacion": "3",
+  "prioridad": "P1 - Crítico"
+ },
+ {
+  "id": "HU-09",
+  "rol": "Administrador de RR. HH.",
+  "quiero": "Eliminar el registro de un empleado.",
+  "para": "Que la lista de personal refleje solo a quienes siguen en la empresa.",
+  "criterios": [
+   "CA-09.1 Dado que pulso eliminar en un empleado, cuando el sistema responde, entonces pide confirmación antes de borrar.",
+   "CA-09.2 Dado que aparece la confirmación, cuando cancelo, entonces el empleado sigue en la lista.",
+   "CA-09.3 Dado que confirmo con \"Yes, Delete\", cuando termina la operación, entonces aparece un mensaje de éxito y el empleado ya no sale en las búsquedas.",
+   "CA-09.4 Dado que el registro tiene restricciones del sistema, cuando intento eliminarlo, entonces se rechaza e informa el motivo."
+  ],
+  "escenarios": "Positivo: Cancelar la eliminación Positivo: Confirmar y buscar de nuevo Negativo: Eliminar un registro con restricciones Casos: CP-014",
+  "estimacion": "2",
+  "prioridad": "P1 - Crítico"
+ },
+ {
+  "id": "HU-10",
+  "rol": "Empleado (ESS)",
+  "quiero": "Pedir vacaciones indicando el tipo de licencia y las fechas.",
+  "para": "Planificar mi descanso y enviar la solicitud a aprobación.",
+  "criterios": [
+   "CA-10.1 Dado que tengo saldo suficiente, cuando envío un rango de fechas válido, entonces la solicitud queda en Pending Approval.",
+   "CA-10.2 Dado que envié la solicitud, cuando reviso My Leave, entonces la duración coincide con los días laborables del rango.",
+   "CA-10.3 Dado que pido más días que mi saldo, cuando envío, entonces se rechaza indicando el motivo.",
+   "CA-10.4 Dado que la fecha final es anterior a la inicial o falta un campo obligatorio, cuando envío, entonces se muestra la validación y no se registra."
+  ],
+  "escenarios": "Positivo: 2 días con saldo suficiente Positivo: 1 día (mínimo) Positivo: Saldo exacto Negativo: Saldo + 1 día Negativo: Fechas invertidas Negativo: Campos vacíos Casos: CP-015, CP-016",
+  "estimacion": "5",
+  "prioridad": "P1 - Crítico"
+ },
+ {
+  "id": "HU-11",
+  "rol": "Supervisor",
+  "quiero": "Aprobar, rechazar o cancelar las solicitudes de vacaciones de mi equipo.",
+  "para": "Controlar las ausencias del equipo.",
+  "criterios": [
+   "CA-11.1 Dado que hay una solicitud en Pending Approval, cuando la apruebo, entonces pasa a Scheduled (o Taken si la fecha ya pasó).",
+   "CA-11.2 Dado que hay una solicitud pendiente, cuando la rechazo, entonces queda en Rejected.",
+   "CA-11.3 Dado que se autoriza cancelar una solicitud, cuando la cancelo, entonces queda en Cancelled.",
+   "CA-11.4 Dado que una solicitud está Rejected o Cancelled, cuando intento aprobarla, entonces el sistema no lo permite."
+  ],
+  "escenarios": "Positivo: Aprobar Positivo: Rechazar Positivo: Cancelar Negativo: Aprobar una solicitud ya rechazada Casos: CP-017, CP-018",
+  "estimacion": "5",
+  "prioridad": "P1 - Crítico"
+ },
+ {
+  "id": "HU-12",
+  "rol": "Empleado (ESS)",
+  "quiero": "Consultar mi saldo de vacaciones.",
+  "para": "Saber cuántos días puedo pedir y comprobar que el saldo se actualiza bien.",
+  "criterios": [
+   "CA-12.1 Dado que tengo días asignados, cuando consulto mi saldo, entonces se muestra por tipo de licencia.",
+   "CA-12.2 Dado que me aprueban una solicitud, cuando consulto el saldo, entonces baja exactamente los días aprobados.",
+   "CA-12.3 Dado que una solicitud se rechaza, cuando consulto el saldo, entonces no se descuenta nada.",
+   "CA-12.4 Dado que se cancela una solicitud que ya había descontado días, cuando consulto el saldo, entonces se devuelven esos días."
+  ],
+  "escenarios": "Positivo: Consulta del saldo Positivo: Descuento después de aprobar Positivo: Sin descuento después de rechazar Positivo: Devolución después de cancelar Casos: CP-015, CP-016, CP-017",
+  "estimacion": "5",
+  "prioridad": "P1 - Crítico"
+ },
+ {
+  "id": "HU-13",
+  "rol": "Empleado (ESS)",
+  "quiero": "Registrar mis horas por día, proyecto y actividad.",
+  "para": "Reportar el tiempo trabajado en la semana.",
+  "criterios": [
+   "CA-13.1 Dado que registro 8 horas de lunes a viernes, cuando guardo, entonces el total semanal es 40 horas y se mantiene al volver a abrir la hoja.",
+   "CA-13.2 Dado que la hoja está completa, cuando pulso Submit, entonces su estado pasa a Submitted.",
+   "CA-13.3 Dado que ingreso más de 24 horas en un día, cuando guardo, entonces se rechaza con su mensaje.",
+   "CA-13.4 Dado que falta información obligatoria, cuando envío, entonces no se permite hasta corregirla."
+  ],
+  "escenarios": "Positivo: 40 horas y Submit Positivo: Persistencia de las horas Negativo: Más de 24 horas en un día Negativo: Fila sin proyecto o actividad Casos: CP-019",
+  "estimacion": "3",
+  "prioridad": "P2 - Importante"
+ },
+ {
+  "id": "HU-14",
+  "rol": "Supervisor",
+  "quiero": "Revisar y aprobar o rechazar las hojas de tiempo enviadas.",
+  "para": "Validar las horas que reporta el equipo.",
+  "criterios": [
+   "CA-14.1 Dado que hay una hoja en Submitted, cuando la apruebo, entonces queda en Approved.",
+   "CA-14.2 Dado que hay una hoja en Submitted, cuando la rechazo, entonces queda en Rejected.",
+   "CA-14.3 Dado que una hoja fue rechazada, cuando el empleado la corrige y la envía otra vez, entonces vuelve a quedar en Submitted.",
+   "CA-14.4 Dado que una hoja no está en Submitted, cuando intento aprobarla o rechazarla, entonces el sistema no lo permite."
+  ],
+  "escenarios": "Positivo: Aprobar Positivo: Rechazar Positivo: Corregir y reenviar Negativo: Aprobar una hoja no enviada Casos: CP-020",
+  "estimacion": "3",
+  "prioridad": "P2 - Importante"
+ },
+ {
+  "id": "HU-15",
+  "rol": "Reclutador",
+  "quiero": "Publicar vacantes con su puesto, responsable y número de posiciones.",
+  "para": "Administrar los procesos de contratación de la empresa.",
+  "criterios": [
+   "CA-15.1 Dado que completo los datos obligatorios, cuando guardo, entonces la vacante aparece en la lista con su nombre, puesto, responsable y posiciones.",
+   "CA-15.2 Dado que dejo vacío el nombre de la vacante, cuando guardo, entonces aparece \"Required\" y no se guarda.",
+   "CA-15.3 Dado que un dato no cumple el formato o la longitud, cuando guardo, entonces se rechaza con su mensaje.",
+   "CA-15.4 Dado que la vacante se guardó, cuando recargo la lista, entonces sigue con los mismos datos."
+  ],
+  "escenarios": "Positivo: Crear vacante Positivo: Persistencia al recargar Negativo: Nombre vacío Negativo: Número de posiciones no válido Casos: CP-021",
+  "estimacion": "2",
+  "prioridad": "P2 - Importante"
+ },
+ {
+  "id": "HU-16",
+  "rol": "Reclutador",
+  "quiero": "Registrar candidatos y adjuntar su CV.",
+  "para": "Tener ordenada la información de cada proceso de selección.",
+  "criterios": [
+   "CA-16.1 Dado que ingreso los datos obligatorios y un CV en formato permitido, cuando guardo, entonces el candidato queda registrado con el CV visible en su ficha.",
+   "CA-16.2 Dado que ingreso un correo con formato inválido, cuando guardo, entonces se rechaza con su mensaje.",
+   "CA-16.3 Dado que adjunto un archivo de formato no permitido o más grande que el límite, cuando guardo, entonces se rechaza e indica el motivo."
+  ],
+  "escenarios": "Positivo: Candidato con CV en PDF Negativo: Correo inválido Negativo: Archivo de formato no permitido Negativo: Archivo más grande que el límite Casos: CP-022",
+  "estimacion": "3",
+  "prioridad": "P2 - Importante"
+ },
+ {
+  "id": "HU-17",
+  "rol": "Empleado (ESS)",
+  "quiero": "Actualizar mis datos personales y de contacto desde My Info.",
+  "para": "Mantener mi información al día sin depender de RR. HH.",
+  "criterios": [
+   "CA-17.1 Dado que cambio un dato permitido, cuando guardo, entonces se confirma el cambio y se mantiene al recargar.",
+   "CA-17.2 Dado que dejo vacío un campo obligatorio, cuando guardo, entonces aparece \"Required\" y no se guarda.",
+   "CA-17.3 Dado que estoy en My Info, cuando reviso los datos, entonces solo veo y modifico mi propio perfil.",
+   "CA-17.4 Dado que edito un campo, cuando guardo, entonces los demás conservan su valor."
+  ],
+  "escenarios": "Positivo: Cambiar el teléfono Positivo: Persistencia al recargar Negativo: Campo obligatorio vacío Negativo: Intentar ver datos de otro empleado Casos: CP-023, CP-009",
+  "estimacion": "2",
+  "prioridad": "P2 - Importante"
+ },
+ {
+  "id": "HU-18",
+  "rol": "Administrador de RR. HH.",
+  "quiero": "Definir KPI y crear evaluaciones de desempeño.",
+  "para": "Evaluar a los empleados con criterios claros y medibles.",
+  "criterios": [
+   "CA-18.1 Dado que ingreso un KPI con su Job Title y un rango válido, cuando guardo, entonces aparece en la lista de KPIs.",
+   "CA-18.2 Dado que la calificación mínima es mayor que la máxima, cuando guardo, entonces se rechaza con su mensaje.",
+   "CA-18.3 Dado que uso los valores mínimo y máximo permitidos, cuando guardo, entonces el KPI se acepta.",
+   "CA-18.4 Dado que creo una evaluación con los datos obligatorios para un empleado, cuando guardo, entonces aparece en Manage Reviews."
+  ],
+  "escenarios": "Positivo: KPI válido Positivo: Valores límite del rango Negativo: Mínimo mayor que el máximo Positivo: Crear evaluación Negativo: Evaluación sin datos obligatorios Casos: CP-024",
+  "estimacion": "5",
+  "prioridad": "P2 - Importante"
+ },
+ {
+  "id": "HU-19",
+  "rol": "Empleado (ESS)",
+  "quiero": "Registrar solicitudes de reembolso de gastos de trabajo.",
+  "para": "Recuperar el dinero de los gastos que la empresa autoriza.",
+  "criterios": [
+   "CA-19.1 Dado que agrego gastos válidos, cuando reviso la solicitud, entonces el total es la suma de los montos.",
+   "CA-19.2 Dado que los datos están completos, cuando pulso Submit, entonces la solicitud queda en Submitted.",
+   "CA-19.3 Dado que un monto está vacío o es negativo, cuando guardo el gasto, entonces se rechaza con su mensaje.",
+   "CA-19.4 Dado que guardé la solicitud, cuando la vuelvo a abrir, entonces conserva sus gastos y montos."
+  ],
+  "escenarios": "Positivo: Gasto de 25.00 y Submit Positivo: Total con varios gastos Negativo: Monto vacío Negativo: Monto negativo Casos: CP-025",
+  "estimacion": "3",
+  "prioridad": "P2 - Importante"
+ },
+ {
+  "id": "HU-20",
+  "rol": "Empleado (ESS)",
+  "quiero": "Ver mi Dashboard y usar los accesos rápidos.",
+  "para": "Llegar rápido a la información y las funciones que más uso.",
+  "criterios": [
+   "CA-20.1 Dado que inicio sesión, cuando carga el Dashboard, entonces se muestran los widgets del alcance sin errores en la consola.",
+   "CA-20.2 Dado que las condiciones de prueba están documentadas (navegador y red), cuando se mide la carga, entonces tarda 3 segundos o menos.",
+   "CA-20.3 Dado que tengo permiso al módulo, cuando pulso un acceso de Quick Launch, entonces se abre el módulo correcto."
+  ],
+  "escenarios": "Positivo: Carga de los widgets Positivo: Tiempo de carga medido con DevTools Positivo: Cada acceso de Quick Launch Negativo: Errores en la consola Casos: CP-026",
+  "estimacion": "2",
+  "prioridad": "P3 - Deseable"
+ },
+ {
+  "id": "HU-21",
+  "rol": "Empleado (ESS)",
+  "quiero": "Buscar compañeros en el directorio por nombre, puesto o ubicación.",
+  "para": "Encontrar su información laboral y poder contactarlos.",
+  "criterios": [
+   "CA-21.1 Dado que escribo parte del nombre de un compañero, cuando busco, entonces aparece en los resultados, incluidos los empleados creados en PIM.",
+   "CA-21.2 Dado que aplico filtros de Job Title o Location, cuando busco, entonces solo salen quienes cumplen esos filtros.",
+   "CA-21.3 Dado que nadie coincide, cuando busco, entonces aparece \"No Records Found\".",
+   "CA-21.4 Dado que consulto el directorio, cuando abro una ficha, entonces solo veo la información que tengo permitido ver."
+  ],
+  "escenarios": "Positivo: Nombre parcial \"G4-\" Positivo: Filtro por puesto Positivo: Filtro por ubicación Negativo: Nombre inexistente Casos: CP-027",
+  "estimacion": "2",
+  "prioridad": "P3 - Deseable"
+ }
+]
