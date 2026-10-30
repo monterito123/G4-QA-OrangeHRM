@@ -4,7 +4,7 @@
 
 - [ ] La presentación final está en `06_PRUEBAS_REALES\PR02_presentacion\` y también en USB y en la nube.
 - [ ] Abrir la versión 2 de la presentación (20 diapositivas) y revisar que se vean las capturas de DevTools (diapositivas 8 y 9), Playwright (17) y herramientas (18).
-- [ ] Si el repo de GitHub ya se subió y Actions corrió: avisar para cambiar GitHub y Actions a "En uso" en la diapositiva 18 con su captura.
+- [ ] Tener abierta en una pestaña la corrida de GitHub Actions (github.com/monterito123/G4-QA-OrangeHRM/actions) por si el profesor pide verla.
 - [ ] El video del plan B está grabado, revisado (se ve y se escucha bien) y copiado en USB y en la nube.
 - [ ] Ensayo completo con cronómetro: entre 23 y 25 minutos. Cada uno sabe cuándo le toca (ver la tabla de reparto en `PR02_notas_del_orador.md`).
 - [ ] Andrés e Ignacio leyeron el glosario y las preguntas probables (`PR02_preguntas_probables.md`), sobre todo la 13: "¿De verdad usaron todas las herramientas?".

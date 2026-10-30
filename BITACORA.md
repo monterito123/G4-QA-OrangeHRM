@@ -801,3 +801,18 @@ Comando: `fase4_playwright.ps1 -Etapa final`, con la ruta completa. La primera v
 Santiago corrió `preparar_repo.ps1` (todavía sin repo creado). Funcionó lo previsto: pasó las claves de MariaDB de `docker-compose.yml` a `docker\.env`, copió el workflow y creó el repositorio local. La revisión de claves **se detuvo** porque `BITACORA.md` tenía escritas la contraseña del Admin local y las de la base de datos (tabla de la Fase 0). No se subió nada.
 
 Arreglo: en la bitácora esas celdas ahora dicen en qué variable está cada clave (`LOCAL_ADMIN_PASS` en `playwright\.env`, `MARIADB_*` en `docker\.env`), sin el valor. Además el script ahora vacía el índice de git antes de `git add -A`, para que lo que esté en `.gitignore` no se quede agregado de una corrida anterior.
+
+**Segunda corrida (30/10, 15:1x):** la revisión de claves pasó ("Ninguna clave real") y se hizo el commit local `1b26e1b` con 54 archivos, pero el push falló porque se usó la URL de ejemplo (`TU_USUARIO`), que no existe. En ese commit se coló `jmeter/jmeter.log`: el `*.log` del `.gitignore` no había llegado a la carpeta (se subió en paralelo con su edición). Se volvió a subir el `.gitignore` y el script ahora corrige el commit con `--amend` mientras no se haya subido nunca (si ya existe `origin/main`, hace un commit nuevo).
+
+
+## GitHub y GitHub Actions funcionando (30/10/2026, 15:32–15:44)
+
+Santiago creó el repositorio **monterito123/G4-QA-OrangeHRM** (público, vacío) y corrió `preparar_repo.ps1`: la revisión de claves pasó, el commit sin subir se rehízo sin `jmeter.log` (`a9c532e`, 53 archivos) y el push funcionó. Se agregaron los secretos DEMO_ADMIN_USER y DEMO_ADMIN_PASS (credenciales públicas de la demo).
+
+- Corrida #1 (push): falló porque todavía no estaban los secretos.
+- Corrida #2 (manual, 15:41): **15 pasaron y 1 falló**, CP-011 (d) en Chromium, el defecto G4QA-23. Igual que la corrida local. 1 min 58 s el job, 2 min 3 s en total, artefacto `reporte-playwright`. El workflow queda en rojo a propósito: la prueba no se tocó (no se marca con `test.fail()` hasta la revisión con el PO).
+- Aviso de GitHub: las acciones checkout, setup-node y upload-artifact v4 usan Node 20, que está obsoleto. No afecta hoy; se puede actualizar después.
+
+**Presentación:** en la diapositiva 18, GitHub y GitHub Actions pasan a "En uso · 30/10" con miniaturas reales (el repo y el log 15/1). Quedan 9 en uso y 1 programada (plantillas Excel). Se actualizaron las notas de la 18 y la pregunta 13, y se agregó la 13b (por qué el workflow sale en rojo).
+
+**Nota:** la copia de la presentación que está en GitHub es la de las 15:36; la versión con la diapositiva 18 actualizada está en la carpeta local. Para subirla: `git add -A`, `git commit -m "PR02 v2: GitHub y Actions en uso"`, `git push`.

@@ -39,7 +39,10 @@ Porque la interfaz gráfica consume memoria y CPU y distorsiona la medición. El
 Lo registramos en Jira como el defecto G4QA-22: severidad S3 (menor: funciona, pero lento), prioridad media, con pasos para reproducirlo, datos, evidencia y la nota del ambiente. Está vinculado a las historias HU-01 (login) y HU-20 (Dashboard).
 
 **13. ¿De verdad usaron todas las herramientas que pusieron en el EX01?** (30 s, señalando la diapositiva 18)
-Sí, y cada una tiene su captura. Eran 10. Siete ya están en uso: Jira desde el 28/10; Docker con OrangeHRM, BlazeMeter y JMeter en la prueba de carga del 28/10; Playwright el 29 y 30/10, con Chrome, Firefox y Edge (96 ejecuciones); y DevTools, que es de donde sacamos el token y las 7 APIs. Dos están en curso: GitHub y GitHub Actions, con el repositorio y el workflow listos para subir antes del 11/11 (Actions era opcional). Y una está programada: las plantillas de Excel, en la ejecución manual del 9 al 13/11, según el Anexo B del Plan. No hay ninguna marcada en verde sin evidencia.
+Sí, y cada una tiene su captura. Eran 10 y nueve ya están en uso: Jira desde el 28/10; Docker con OrangeHRM, BlazeMeter y JMeter en la prueba de carga del 28/10; Playwright el 29 y 30/10 con Chrome, Firefox y Edge (96 ejecuciones); DevTools, de donde sacamos el token y las 7 APIs; y GitHub con GitHub Actions desde el 30/10: el repositorio monterito123/G4-QA-OrangeHRM corre la regresión en cada push y dio 15 de 16 (la que falla es G4QA-23). La única que falta son las plantillas de Excel, porque su fase es la ejecución manual del 9 al 13/11, según el Anexo B del Plan.
+
+**13b. ¿Por qué el workflow de GitHub Actions sale en rojo?**
+Porque una prueba falla de verdad: CP-011 (d), el defecto G4QA-23. No la escondimos para que salga verde. Después de la revisión con el PO (2–3/11) se decide si se marca como falla esperada con `test.fail()` o si se corrige el criterio.
 
 **14. ¿Por qué falla CP-011 (d) en Playwright? ¿No será el script?**
 No. Falla igual en los 3 navegadores y en los 2 ambientes (local y demo pública): el nombre "G4-<Ana>" se guarda cuando el criterio CA-06.4 dice que se debe rechazar. Está registrado como G4QA-23 (S4 Incidental, prioridad baja). No ajustamos la prueba para que pase; la lista exacta de caracteres permitidos se define con el PO (tarea G4QA-24, 2 y 3/11).

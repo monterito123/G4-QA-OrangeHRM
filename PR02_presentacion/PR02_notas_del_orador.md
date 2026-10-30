@@ -186,14 +186,15 @@ Ojo: contra la demo pública solo corremos pruebas funcionales, nunca carga.
 ### 18. Todas las herramientas del EX01: compromiso → evidencia — Andrés (2:00)
 
 En el EX01 pusimos 10 herramientas en la Estrategia y el Plan. Aquí está cada una con su evidencia real; nada está en verde sin una captura.
-En uso (verde), 7:
+En uso (verde), 9:
 - Jira desde el 28/10: el sprint, los casos y los defectos G4QA-22 y G4QA-23.
 - Docker con OrangeHRM 5.9, BlazeMeter y JMeter: el 28/10, todo lo que acabamos de mostrar.
 - Playwright, el 29 y 30/10, y con él Chrome, Firefox y Edge: las 96 ejecuciones.
 - DevTools: las capturas del token y del login del 30/10.
-En curso (amarillo), 2: GitHub y GitHub Actions. El repositorio y el workflow ya están preparados, sin contraseñas (el .env no se sube). Falta crear el repo en GitHub y subirlo; la fecha límite es antes del 11/11, antes de la Fase 5. Actions estaba como opcional en la Estrategia.
+- GitHub: el repositorio monterito123/G4-QA-OrangeHRM, subido el 30/10, sin el .env ni ninguna contraseña (un script revisa eso antes de subir y la primera vez nos frenó).
+- GitHub Actions, que en la Estrategia era opcional: en cada push corre la regresión en Chromium contra la demo. La primera corrida dio 15 de 16: la que falla es CP-011 (d), el mismo defecto G4QA-23. O sea, el defecto se reproduce también en la nube.
 Programada (azul), 1: las plantillas de Excel del curso. Según el Anexo B del Plan se usan en la ejecución manual: Ignacio en los ciclos 1 y 2 (9 al 11/11), yo en el ciclo 3 (11 y 12/11) y Santiago en el ciclo 4 (12 y 13/11).
-O sea: no pusimos herramientas de relleno. Las que todavía no se ven es porque su fase aún no llega.
+O sea: no pusimos herramientas de relleno. La única que falta es la que su fase todavía no llega.
 
 ### 19. Demo en vivo — Santiago (3:45)
 
