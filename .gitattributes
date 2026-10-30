@@ -1,0 +1,8 @@
+# Archivos binarios: Git no debe cambiar los finales de línea (si no, se dañan al descargarlos en Windows)
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.pptx binary
+*.xlsx binary
+*.zip binary
