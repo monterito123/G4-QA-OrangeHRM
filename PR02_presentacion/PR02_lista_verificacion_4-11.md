@@ -6,8 +6,8 @@
 - [ ] Abrir la versión 2 de la presentación (20 diapositivas) y revisar que se vean las capturas de DevTools (diapositivas 8 y 9), Playwright (17) y herramientas (18).
 - [ ] Tener abierta en una pestaña la corrida de GitHub Actions (github.com/monterito123/G4-QA-OrangeHRM/actions) por si el profesor pide verla.
 - [ ] El video del plan B está grabado, revisado (se ve y se escucha bien) y copiado en USB y en la nube.
-- [ ] Ensayo completo con cronómetro: entre 23 y 25 minutos. Cada uno sabe cuándo le toca (ver la tabla de reparto en `PR02_notas_del_orador.md`).
-- [ ] Andrés e Ignacio leyeron el glosario y las preguntas probables (`PR02_preguntas_probables.md`), sobre todo la 13: "¿De verdad usaron todas las herramientas?".
+- [ ] Santiago: ensayo solo de la presentación completa con cronómetro (23 a 25 min), diciendo también las partes de Ignacio y Andrés para medir el total.
+- [ ] Ignacio y Andrés recibieron por chat su hoja (`PR02_hoja_Ignacio.pdf`, `PR02_hoja_Andres.pdf`) y confirmaron que la estudiaron. Sin ensayo en grupo.
 - [ ] Laptop cargada y cargador en el bulto.
 
 ## En la mañana, antes de salir

@@ -38,7 +38,8 @@ Archivo: `PR02_JMeter_BlazeMeter_Grupo4.pptx` (versión 2, 30/10). Las mismas no
 - Meta: entre 23 y 25 minutos. Si van atrasados, la demo se acorta saltándose la parte c) y se remite a la diapositiva 13.
 - Cambios de expositor: Santiago → Ignacio (3) → Santiago (7) → Andrés (10) → Ignacio (14) → Andrés (15) → Ignacio (16 y 17) → Andrés (18) → Santiago (demo) → Andrés (20).
 - Cada diapositiva tiene abajo a la izquierda el nombre de quien expone.
-- La diapositiva 18 (herramientas) es la respuesta a "¿de verdad usaron todo?". Los tres tienen que poder explicarla.
+- La diapositiva 18 (herramientas) es la respuesta a "¿de verdad usaron todo?". La expone Andrés; Santiago la tiene que poder explicar si preguntan.
+- Sin ensayos en grupo: Ignacio y Andrés estudian solos con su hoja (`PR02_hoja_Ignacio.pdf` y `PR02_hoja_Andres.pdf`); Santiago ensaya solo el total.
 
 ## Glosario rápido (para Andrés e Ignacio, que no corrieron la Fase 2)
 

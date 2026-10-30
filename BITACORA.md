@@ -816,3 +816,87 @@ Santiago creó el repositorio **monterito123/G4-QA-OrangeHRM** (público, vacío
 **Presentación:** en la diapositiva 18, GitHub y GitHub Actions pasan a "En uso · 30/10" con miniaturas reales (el repo y el log 15/1). Quedan 9 en uso y 1 programada (plantillas Excel). Se actualizaron las notas de la 18 y la pregunta 13, y se agregó la 13b (por qué el workflow sale en rojo).
 
 **Nota:** la copia de la presentación que está en GitHub es la de las 15:36; la versión con la diapositiva 18 actualizada está en la carpeta local. Para subirla: `git add -A`, `git commit -m "PR02 v2: GitHub y Actions en uso"`, `git push`.
+
+
+## Organización definitiva y kit de ejecución de los ciclos 1 a 3 (30/10/2026, 15:52–16:30)
+
+**Decisión de Santiago:**
+- La ejecución respeta el Anexo B: Ignacio hace los ciclos 1 y 2, Andrés el ciclo 3 y Santiago el ciclo 4. No hay cambio de asignación en la ejecución.
+- Todo lo demás lo hace Santiago (con Claude).
+- No hay reuniones ni trabajo en grupo: la comunicación es por chat. Santiago manda un kit y ellos devuelven las evidencias.
+- PR02: los tres exponen el 4/11. Cada uno estudia solo con su hoja y Santiago ensaya solo el total.
+- Ajustes de actividades que no son de ejecución: revisión con el PO, preparación de datos, apoyo en el ciclo 4 y retrospectiva. Están en `PLAN_MAESTRO_organizacion.md`.
+
+**Ambiente:** el Plan define la demo pública como la aplicación bajo prueba (Tabla 3 y Anexo A), así que los 27 casos se pueden ejecutar ahí. Ninguno pasa al ciclo 4. Ajustes de datos, sin tocar los pasos:
+- CP-016 usa un segundo ESS, g4.ess02, para que la solicitud de CP-015 no cambie el saldo de partida.
+- CP-018 crea sus dos solicitudes al empezar.
+- CP-020 usa la segunda hoja enviada en CP-019.
+
+**Archivos nuevos:**
+- `playwright/tools/preparar_datos_ciclo.js` y `scripts/preparar_datos_ciclo.ps1`: crean en la demo los datos G4- de cada ciclo y escriben la hoja de datos.
+  - Opciones `-Limpiar` y `-Base`.
+  - Las fechas de vacaciones son fijas desde el 16/11.
+  - La clave de los ESS de prueba cambia cada día.
+  - Si la API no deja crear algo, el script lo dice con la instrucción para hacerlo a mano.
+  - **Todavía no se probó contra la demo** (desde la nube no hay acceso): Santiago lo corre el 31/10.
+- `kit_ejecucion/`:
+  - Un PDF por ejecutor, con una página por caso: pasos del Plan, datos, esperado por paso, nombre exacto de cada captura y qué hacer al terminar.
+  - Una página "Si algo falla": cómo distinguir defecto de problema de la demo, severidad y prioridad, defectos conocidos y cómo recrear datos.
+  - La plantilla Excel del curso prellenada, con una hoja por caso.
+  - La guía de Jira de 1 página con capturas.
+  - Los archivos de CP-022.
+  - `capturas_esperadas.json` (94 capturas) y el `LEEME_Santiago.md`.
+- `scripts/revisar_evidencias.ps1`: revisa el ZIP que devuelven, renombra las capturas con la regla `AAAA-MM-DD_HHmm_...` y las copia a `evidencias/fase3/cicloN/`.
+- `PR02_presentacion/PR02_hoja_Ignacio.pdf` y `PR02_hoja_Andres.pdf`: sus diapositivas con miniatura, qué decir, tiempos (6:45 y 7:55), cuándo entran y salen, y las preguntas que les pueden tocar.
+- Se quitaron del contexto y de la lista de verificación del PR02 las tareas en grupo ("Grupo + PO", "ensayo completo… cada uno sabe", "Grupo").
+
+**Jira:** para la guía se abrieron en el navegador de Claude la historia G4QA-6 y el formulario Crear con tipo Error. No se creó ni se modificó nada; las imágenes están en `kit_ejecucion/img_jira/`.
+
+**Pendiente:** los correos de Ignacio y Andrés para invitarlos a Jira.
+
+**Arreglo (30/10, 16:15):** la primera corrida de `preparar_datos_ciclo.ps1 -Ciclo 3` falló antes de llegar a la demo. El parámetro `-Base` y la variable `$base` (la carpeta del proyecto) son la misma variable en PowerShell, porque no distingue mayúsculas, y la ruta quedó en "False". Se renombró la variable a `$raiz`.
+
+**Segunda corrida del ciclo 3 (30/10, 16:16), en la demo:**
+- Funcionó: login, G4-Ana Prueba con g4.ess01, G4-Luis Prueba, el cliente y el proyecto de Time, el evento y el tipo de gasto de Claim, y el puesto "QA Engineer".
+- Falló: la actividad del proyecto (404 en `time/projects/{id}/activities`). Se cambió a la ruta en singular `time/project/{id}/activities`, que es la de OrangeHRM 5, y la plural queda de respaldo. Hay que correrlo otra vez; reutiliza todo lo demás.
+
+**Tercera corrida del ciclo 3 (16:18):** sin advertencias; la actividad G4-Pruebas se creó con la ruta en singular. El script del ciclo 3 queda probado en la demo. Falta probar el ciclo 2 (g4.ess02, saldo de 5 días, G4-Borrar y fechas).
+
+**Corrida del ciclo 2 (16:21):** sin advertencias. Creó g4.ess02 con 5 días de G4-Vacaciones y a G4-Borrar Prueba. Las fechas salen fijas del 16/11 en adelante y saltan el fin de semana (W6 = 23/11). **El script queda probado en la demo para los ciclos 2 y 3.** Los datos de hoy se borran el 9/11 con `-Limpiar`.
+
+
+## Plan B de Jira, limpieza con conteo, revisión de seguridad del repo y G4QA-24 (30/10/2026, 16:25–17:00)
+
+**Plan B de Jira:** si el día de su ciclo Ignacio o Andrés no tienen acceso a Jira, registran todo en el Excel (con "PENDIENTE JIRA" en BUG ASOCIADO) y mandan las capturas de los fallos por chat. Santiago registra los resultados y los defectos a su nombre, con la nota "ejecutado por <Ignacio/Andrés> el <fecha>, registrado por Santiago". Se agregó la sección "Si no puedes entrar a Jira" en los dos kits y en la guía de Jira. Los correos llegan a más tardar el 6/11: invitación, captura y prueba de acceso antes del 9/11.
+
+**Script de datos:**
+- Ciclo 1: no necesita datos (solo Admin).
+- Ciclo 4: no usa el script; Playwright crea y borra sus datos.
+- `--limpiar` / `limpiar`: ahora borra también los registros G4- de configuración (tipos de licencia, proyectos y clientes de Time, eventos y tipos de gasto de Claim, vacantes, candidatos y KPI). Al final verifica, como el teardown de Playwright: "Verificación: Quedan 0 empleados G4-, 0 usuarios g4.ess y 0 registros G4-…", o ADVERTENCIA si queda algo. Falta correrlo una vez para comprobarlo.
+- La clave de los ESS de prueba ya no se deriva de la fecha. Con la fecha, el 10/11 la hoja habría mostrado una clave distinta a la del usuario creado el 9/11, y el patrón habría quedado público en GitHub. Ahora se genera al azar la primera vez y se guarda en `kit_ejecucion/datos/clave_ess.txt`, que no se sube.
+
+**Revisión de seguridad del repositorio público** (clon de `monterito123/G4-QA-OrangeHRM`, commits a9c532e y c2b490e):
+- Ninguna clave en ningún commit. Se buscó la clave del Admin local y las dos de MariaDB en todo el historial, y otros patrones de clave, token o API key.
+- No se suben `.env`, `CONTEXTO_PROYECTO.md`, el YAML de BlazeMeter, logs, evidencias ni `auth/`.
+- Las 2 presentaciones (115 imágenes): sin la clave en el XML. Con OCR de todas las imágenes solo aparece "password" en el YAML (tapada con puntos) y en el POST de DevTools (recuadro "contraseña tapada").
+- Correos: solo `qa.grupo4@example.com` (ficticio). IP: solo 127.0.0.1.
+- Datos que sí se ven, de riesgo bajo:
+  - La ruta `C:\Users\SantiagoMontero\...` (usuario de Windows) en la bitácora y en 4 documentos del PR02.
+  - El nombre del sitio de Jira (`santiagomonterosancho.atlassian.net`), que pide inicio de sesión.
+  - Los nombres completos de los tres integrantes (ya están en la presentación).
+- Las corridas de GitHub Actions son públicas en un repo público. Los secretos salen enmascarados, y el usuario y la clave de la demo son públicos de todos modos.
+- `kit_ejecucion/datos/` se agregó al `.gitignore` (trae la clave de los ESS de prueba).
+
+**G4QA-24:** propuesta lista para decidir en `G4QA-24_revision_PO.md`.
+- Opción A: OrangeHRM debe validar con una lista de permitidos (letras con tilde, ñ, ü, números, espacio, apóstrofo, guion y punto). G4QA-23 sigue abierto y CP-011 (d) se marca con `test.fail()`.
+- Opción B: el criterio se ajusta, G4QA-23 se rechaza y CP-011 (d) pasa a verificar el escape.
+- Claude recomienda la A. Incluye los textos para pegar en Jira y quién hace cada paso.
+- Dato clave: los datos "G4-" llevan número y guion, así que la lista no puede prohibirlos.
+
+**Plan maestro:** se agregaron la lista por herramienta (10 herramientas, 3 columnas), "correos → invitación → prueba de acceso" con límite el 6/11 y la preparación de cada mañana (9 al 12/11) con el comando exacto y quién lo corre (Santiago).
+
+**Prueba de la limpieza (16:31):** `-Ciclo limpiar` borró 3 empleados G4- con sus usuarios, 1 proyecto, 1 cliente, 1 tipo de licencia y 1 tipo de gasto, y verificó "Quedan 0…". La limpieza con conteo queda probada.
+
+Ojo: el evento de Claim "G4-Viaje de trabajo" salió con 0 borrados, aunque el script del ciclo 3 lo creó sin error. O la demo ya lo había borrado, o la lista de eventos de la API no trae el nombre en el campo que lee el script (y entonces la verificación tampoco lo vería). Se confirma a mano en Claim > Configuration > Events. Además, el `.ps1` ya no muestra "Mandar por chat…" al limpiar.
+
+**Push del kit (16:33):** el commit `3445099` se hizo, pero el push no aparece en GitHub. Git trató `G4-CV-Prueba.pdf` como texto ("LF will be replaced by CRLF"): en Windows un PDF se puede dañar si se le cambian los finales de línea. Se agregó `.gitattributes`, que marca como binarios los pdf, png, jpg, pptx, xlsx y zip.

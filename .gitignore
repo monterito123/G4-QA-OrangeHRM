@@ -27,3 +27,7 @@ PR02_presentacion/fuente/
 
 # Logs sueltos (por ejemplo jmeter/jmeter.log)
 *.log
+
+# Hojas de datos diarias (traen la clave de los usuarios de prueba de la demo)
+kit_ejecucion/datos/
+kit_ejecucion/fuente/__pycache__/

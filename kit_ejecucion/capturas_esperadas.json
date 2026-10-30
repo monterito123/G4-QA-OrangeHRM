@@ -1,0 +1,472 @@
+{
+ "C1_CP-001_1": {
+  "ciclo": 1,
+  "caso": "CP-001",
+  "que": "pantalla de login vacía"
+ },
+ "C1_CP-001_2": {
+  "ciclo": 1,
+  "caso": "CP-001",
+  "que": "Dashboard con el menú y el nombre del usuario"
+ },
+ "C1_CP-002_1": {
+  "ciclo": 1,
+  "caso": "CP-002",
+  "que": "(a) mensaje Invalid credentials"
+ },
+ "C1_CP-002_2": {
+  "ciclo": 1,
+  "caso": "CP-002",
+  "que": "(b) mensaje Invalid credentials"
+ },
+ "C1_CP-002_3": {
+  "ciclo": 1,
+  "caso": "CP-002",
+  "que": "(c) Required en los dos campos"
+ },
+ "C1_CP-003_1": {
+  "ciclo": 1,
+  "caso": "CP-003",
+  "que": "login después del Logout"
+ },
+ "C1_CP-003_2": {
+  "ciclo": 1,
+  "caso": "CP-003",
+  "que": "después de Atrás: sigue en el login"
+ },
+ "C1_CP-026_1": {
+  "ciclo": 1,
+  "caso": "CP-026",
+  "que": "Dashboard con Network y el valor Load visible"
+ },
+ "C1_CP-026_2": {
+  "ciclo": 1,
+  "caso": "CP-026",
+  "que": "Console sin errores (o con los que haya)"
+ },
+ "C1_CP-026_3": {
+  "ciclo": 1,
+  "caso": "CP-026",
+  "que": "uno de los módulos abierto desde Quick Launch"
+ },
+ "C2_CP-001_1": {
+  "ciclo": 2,
+  "caso": "CP-001",
+  "que": "pantalla de login vacía"
+ },
+ "C2_CP-001_2": {
+  "ciclo": 2,
+  "caso": "CP-001",
+  "que": "Dashboard con el menú y el nombre del usuario"
+ },
+ "C2_CP-002_1": {
+  "ciclo": 2,
+  "caso": "CP-002",
+  "que": "(a) mensaje Invalid credentials"
+ },
+ "C2_CP-002_2": {
+  "ciclo": 2,
+  "caso": "CP-002",
+  "que": "(b) mensaje Invalid credentials"
+ },
+ "C2_CP-002_3": {
+  "ciclo": 2,
+  "caso": "CP-002",
+  "que": "(c) Required en los dos campos"
+ },
+ "C2_CP-003_1": {
+  "ciclo": 2,
+  "caso": "CP-003",
+  "que": "login después del Logout"
+ },
+ "C2_CP-003_2": {
+  "ciclo": 2,
+  "caso": "CP-003",
+  "que": "después de Atrás: sigue en el login"
+ },
+ "C2_CP-010_1": {
+  "ciclo": 2,
+  "caso": "CP-010",
+  "que": "formulario lleno con el Employee Id visible"
+ },
+ "C2_CP-010_2": {
+  "ciclo": 2,
+  "caso": "CP-010",
+  "que": "Personal Details de G4-Ana"
+ },
+ "C2_CP-010_3": {
+  "ciclo": 2,
+  "caso": "CP-010",
+  "que": "G4-Ana en Employee List"
+ },
+ "C2_CP-011_1": {
+  "ciclo": 2,
+  "caso": "CP-011",
+  "que": "(a) Required"
+ },
+ "C2_CP-011_2": {
+  "ciclo": 2,
+  "caso": "CP-011",
+  "que": "(b) Should not exceed 30 characters"
+ },
+ "C2_CP-011_3": {
+  "ciclo": 2,
+  "caso": "CP-011",
+  "que": "(b) 30 caracteres guardado"
+ },
+ "C2_CP-011_4": {
+  "ciclo": 2,
+  "caso": "CP-011",
+  "que": "(c) Employee Id already exists"
+ },
+ "C2_CP-011_5": {
+  "ciclo": 2,
+  "caso": "CP-011",
+  "que": "(d) resultado con G4-<Ana>"
+ },
+ "C2_CP-012_1": {
+  "ciclo": 2,
+  "caso": "CP-012",
+  "que": "resultado por nombre"
+ },
+ "C2_CP-012_2": {
+  "ciclo": 2,
+  "caso": "CP-012",
+  "que": "resultado por Employee Id"
+ },
+ "C2_CP-012_3": {
+  "ciclo": 2,
+  "caso": "CP-012",
+  "que": "No Records Found"
+ },
+ "C2_CP-013_1": {
+  "ciclo": 2,
+  "caso": "CP-013",
+  "que": "apellido actualizado"
+ },
+ "C2_CP-013_2": {
+  "ciclo": 2,
+  "caso": "CP-013",
+  "que": "teléfono guardado"
+ },
+ "C2_CP-013_3": {
+  "ciclo": 2,
+  "caso": "CP-013",
+  "que": "datos después de recargar"
+ },
+ "C2_CP-013_4": {
+  "ciclo": 2,
+  "caso": "CP-013",
+  "que": "Required con el apellido vacío"
+ },
+ "C2_CP-005_1": {
+  "ciclo": 2,
+  "caso": "CP-005",
+  "que": "formulario Add User lleno (contraseña con puntos)"
+ },
+ "C2_CP-005_2": {
+  "ciclo": 2,
+  "caso": "CP-005",
+  "que": "g4.ess01 en la lista, ESS y Enabled"
+ },
+ "C2_CP-005_3": {
+  "ciclo": 2,
+  "caso": "CP-005",
+  "que": "g4.ess01 con sesión iniciada"
+ },
+ "C2_CP-006_1": {
+  "ciclo": 2,
+  "caso": "CP-006",
+  "que": "(a) Already exists"
+ },
+ "C2_CP-006_2": {
+  "ciclo": 2,
+  "caso": "CP-006",
+  "que": "(b) mensaje de longitud mínima del usuario"
+ },
+ "C2_CP-006_3": {
+  "ciclo": 2,
+  "caso": "CP-006",
+  "que": "(c) Passwords do not match"
+ },
+ "C2_CP-006_4": {
+  "ciclo": 2,
+  "caso": "CP-006",
+  "que": "(d) mensaje de longitud mínima de la contraseña"
+ },
+ "C2_CP-006_5": {
+  "ciclo": 2,
+  "caso": "CP-006",
+  "que": "(e) Required en los obligatorios"
+ },
+ "C2_CP-007_1": {
+  "ciclo": 2,
+  "caso": "CP-007",
+  "que": "g4.ess01 en Disabled"
+ },
+ "C2_CP-007_2": {
+  "ciclo": 2,
+  "caso": "CP-007",
+  "que": "login rechazado de g4.ess01"
+ },
+ "C2_CP-007_3": {
+  "ciclo": 2,
+  "caso": "CP-007",
+  "que": "g4.ess01 entra después de reactivarlo"
+ },
+ "C2_CP-004_1": {
+  "ciclo": 2,
+  "caso": "CP-004",
+  "que": "confirmación del restablecimiento"
+ },
+ "C2_CP-004_2": {
+  "ciclo": 2,
+  "caso": "CP-004",
+  "que": "Required con el campo vacío"
+ },
+ "C2_CP-008_1": {
+  "ciclo": 2,
+  "caso": "CP-008",
+  "que": "menú de g4.ess01 sin Admin"
+ },
+ "C2_CP-008_2": {
+  "ciclo": 2,
+  "caso": "CP-008",
+  "que": "resultado de abrir la URL de Admin (con la barra de direcciones visible)"
+ },
+ "C2_CP-009_1": {
+  "ciclo": 2,
+  "caso": "CP-009",
+  "que": "resultado de la URL de la lista de empleados"
+ },
+ "C2_CP-009_2": {
+  "ciclo": 2,
+  "caso": "CP-009",
+  "que": "My Info con los datos de G4-Ana"
+ },
+ "C2_CP-015_1": {
+  "ciclo": 2,
+  "caso": "CP-015",
+  "que": "Entitlement de 5 días para G4-Ana"
+ },
+ "C2_CP-015_2": {
+  "ciclo": 2,
+  "caso": "CP-015",
+  "que": "Successfully Saved al aplicar"
+ },
+ "C2_CP-015_3": {
+  "ciclo": 2,
+  "caso": "CP-015",
+  "que": "My Leave con Pending Approval y 2 días"
+ },
+ "C2_CP-016_1": {
+  "ciclo": 2,
+  "caso": "CP-016",
+  "que": "1 día aceptado"
+ },
+ "C2_CP-016_2": {
+  "ciclo": 2,
+  "caso": "CP-016",
+  "que": "5 días aceptado"
+ },
+ "C2_CP-016_3": {
+  "ciclo": 2,
+  "caso": "CP-016",
+  "que": "6 días rechazado por saldo"
+ },
+ "C2_CP-016_4": {
+  "ciclo": 2,
+  "caso": "CP-016",
+  "que": "rango de fechas al revés rechazado"
+ },
+ "C2_CP-017_1": {
+  "ciclo": 2,
+  "caso": "CP-017",
+  "que": "solicitud en Pending Approval"
+ },
+ "C2_CP-017_2": {
+  "ciclo": 2,
+  "caso": "CP-017",
+  "que": "solicitud en Scheduled"
+ },
+ "C2_CP-017_3": {
+  "ciclo": 2,
+  "caso": "CP-017",
+  "que": "saldo de G4-Ana después de aprobar"
+ },
+ "C2_CP-018_1": {
+  "ciclo": 2,
+  "caso": "CP-018",
+  "que": "dos solicitudes en Pending Approval"
+ },
+ "C2_CP-018_2": {
+  "ciclo": 2,
+  "caso": "CP-018",
+  "que": "Rejected, Cancelled y el saldo"
+ },
+ "C2_CP-018_3": {
+  "ciclo": 2,
+  "caso": "CP-018",
+  "que": "la rechazada sin opción de aprobar"
+ },
+ "C2_CP-014_1": {
+  "ciclo": 2,
+  "caso": "CP-014",
+  "que": "mensaje Are you Sure?"
+ },
+ "C2_CP-014_2": {
+  "ciclo": 2,
+  "caso": "CP-014",
+  "que": "sigue en la lista después de cancelar"
+ },
+ "C2_CP-014_3": {
+  "ciclo": 2,
+  "caso": "CP-014",
+  "que": "Successfully Deleted"
+ },
+ "C2_CP-014_4": {
+  "ciclo": 2,
+  "caso": "CP-014",
+  "que": "No Records Found al buscarlo"
+ },
+ "C3_CP-021_1": {
+  "ciclo": 3,
+  "caso": "CP-021",
+  "que": "formulario lleno"
+ },
+ "C3_CP-021_2": {
+  "ciclo": 3,
+  "caso": "CP-021",
+  "que": "G4-Vacante QA en la lista"
+ },
+ "C3_CP-021_3": {
+  "ciclo": 3,
+  "caso": "CP-021",
+  "que": "Required sin nombre"
+ },
+ "C3_CP-022_1": {
+  "ciclo": 3,
+  "caso": "CP-022",
+  "que": "ficha del candidato con el CV"
+ },
+ "C3_CP-022_2": {
+  "ciclo": 3,
+  "caso": "CP-022",
+  "que": "mensaje del correo inválido"
+ },
+ "C3_CP-022_3": {
+  "ciclo": 3,
+  "caso": "CP-022",
+  "que": "mensaje del archivo no permitido"
+ },
+ "C3_CP-019_1": {
+  "ciclo": 3,
+  "caso": "CP-019",
+  "que": "hoja con 40:00"
+ },
+ "C3_CP-019_2": {
+  "ciclo": 3,
+  "caso": "CP-019",
+  "que": "hoja en Submitted"
+ },
+ "C3_CP-019_3": {
+  "ciclo": 3,
+  "caso": "CP-019",
+  "que": "mensaje con 25 horas"
+ },
+ "C3_CP-019_4": {
+  "ciclo": 3,
+  "caso": "CP-019",
+  "que": "segunda hoja en Submitted"
+ },
+ "C3_CP-020_1": {
+  "ciclo": 3,
+  "caso": "CP-020",
+  "que": "hoja en Approved"
+ },
+ "C3_CP-020_2": {
+  "ciclo": 3,
+  "caso": "CP-020",
+  "que": "hoja en Rejected"
+ },
+ "C3_CP-020_3": {
+  "ciclo": 3,
+  "caso": "CP-020",
+  "que": "la rechazada se puede editar"
+ },
+ "C3_CP-023_1": {
+  "ciclo": 3,
+  "caso": "CP-023",
+  "que": "teléfono guardado"
+ },
+ "C3_CP-023_2": {
+  "ciclo": 3,
+  "caso": "CP-023",
+  "que": "teléfono después de recargar"
+ },
+ "C3_CP-023_3": {
+  "ciclo": 3,
+  "caso": "CP-023",
+  "que": "Required con el apellido vacío"
+ },
+ "C3_CP-024_1": {
+  "ciclo": 3,
+  "caso": "CP-024",
+  "que": "G4-KPI Calidad en la lista"
+ },
+ "C3_CP-024_2": {
+  "ciclo": 3,
+  "caso": "CP-024",
+  "que": "mensaje del rango inválido"
+ },
+ "C3_CP-024_3": {
+  "ciclo": 3,
+  "caso": "CP-024",
+  "que": "evaluación de G4-Ana en la lista"
+ },
+ "C3_CP-025_1": {
+  "ciclo": 3,
+  "caso": "CP-025",
+  "que": "gasto de 25.00 y el total"
+ },
+ "C3_CP-025_2": {
+  "ciclo": 3,
+  "caso": "CP-025",
+  "que": "solicitud en Submitted"
+ },
+ "C3_CP-025_3": {
+  "ciclo": 3,
+  "caso": "CP-025",
+  "que": "mensajes del monto vacío y negativo"
+ },
+ "C3_CP-026_1": {
+  "ciclo": 3,
+  "caso": "CP-026",
+  "que": "Dashboard con Network y el valor Load visible"
+ },
+ "C3_CP-026_2": {
+  "ciclo": 3,
+  "caso": "CP-026",
+  "que": "Console sin errores (o con los que haya)"
+ },
+ "C3_CP-026_3": {
+  "ciclo": 3,
+  "caso": "CP-026",
+  "que": "uno de los módulos abierto desde Quick Launch"
+ },
+ "C3_CP-027_1": {
+  "ciclo": 3,
+  "caso": "CP-027",
+  "que": "G4-Ana en Directory"
+ },
+ "C3_CP-027_2": {
+  "ciclo": 3,
+  "caso": "CP-027",
+  "que": "filtrado por puesto"
+ },
+ "C3_CP-027_3": {
+  "ciclo": 3,
+  "caso": "CP-027",
+  "que": "resultado con nombre inexistente"
+ }
+}
